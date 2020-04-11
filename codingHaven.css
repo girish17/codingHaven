@@ -1,0 +1,24 @@
+#searchText {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+img h1{
+    display: inline;
+}
+
+body {
+    background-color: lightblue;
+}
+
+input {
+    color: lightcoral;
+    background-color: mistyrose;
+}
+
+textarea {
+    width: 500px;
+    height: 100px;
+    resize: none;
+}
