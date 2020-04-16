@@ -6,15 +6,20 @@ document.getElementById("postQuestion").onclick =  function postQuestion(formDet
 }
 
 function loadAnswerTextArea() {
-    document.getElementById("answerButton").hidden = true
-    var textArea = document.createElement('div')
-    textArea.innerHTML = '<textarea name="answerText" id="answerText" rows="20" cols="70" required="required" placeholder="Please type your answer here"></textarea>'
+    document.getElementById("answerButton").remove()
+    var answerDiv = document.createElement('div')
+    answerDiv.setAttribute("id", "answerDiv")
+    answerDiv.innerHTML = '<textarea name="answerText" id="answerText" rows="20" cols="70" required="required" placeholder="Please type your answer here"></textarea>'
     var postAnswerButton = document.createElement('div')
     postAnswerButton.innerHTML = '<input id="postAnswer" type="submit" value="Post Answer" onclick="postAnswer()">'
-    document.getElementById("answerButton").after(textArea)
-    document.getElementById("answerText").after(postAnswerButton)
+    document.getElementById("postedQuestions").appendChild(answerDiv)
+    document.getElementById("answerText").after(postAnswerButton)  
 }
 
 function postAnswer() {
     alert("Answer posted successfully")
+    var answer = 'A. ' + document.getElementById("answerText").value + '<br>'
+    //Hide the answer div containg textarea and post question button
+    document.getElementById("answerDiv").remove()
+    document.getElementById("postedQuestions").innerHTML += answer
 }
