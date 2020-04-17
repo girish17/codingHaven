@@ -17,8 +17,7 @@ function loadAnswerTextArea() {
 }
 
 function postAnswer() {
-    alert("Answer posted successfully")
-    var answer = 'A. ' + document.getElementById("answerText").value + '<br>'
+    var answer = '<span id="answerTextElement"> A. ' + document.getElementById("answerText").value + '</span><br>'
     //Hide the answer div containg textarea and post question button
     document.getElementById("answerDiv").remove()
     document.getElementById("postedQuestions").innerHTML += answer
