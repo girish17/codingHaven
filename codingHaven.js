@@ -1,6 +1,6 @@
 var count = 0
-document.getElementById("postQuestion").onclick =  function postQuestion(formDetails) {
-    var question = ++count + '. ' + document.getElementById("question").value + '<br>'
+document.getElementById("postQuestion").onclick =  function postQuestion() {
+    var question = '<span class="questionText">' + ++count + '. ' + document.getElementById("question").value + '<span><br>'
     var button = '<input type="button" value="Answer" class="answerButton" id="answerButton" onclick="loadAnswerTextArea()">'
     document.getElementById("postedQuestions").innerHTML += question+button
 }
@@ -21,4 +21,24 @@ function postAnswer() {
     //Hide the answer div containg textarea and post question button
     document.getElementById("answerDiv").remove()
     document.getElementById("postedQuestions").innerHTML += answer
+}
+
+document.getElementById("searchText").onkeydown = () => {
+    var searchString = document.getElementById("searchText").value
+    var searchDiv = document.createElement('div')
+    searchDiv.setAttribute("id", "searchDiv")
+    var questionTexts = document.getElementsByClassName("questionText")
+    for(var i=0; i<questionTexts.length; i++)
+    {
+        if((searchString.length  > 0) && (questionTexts[i].innerHTML.search(searchString) > -1)) {
+            searchDiv.innerHTML = questionTexts[i].innerHTML
+            document.getElementById("searchText").after(searchDiv)
+        }
+        else {
+            if(document.getElementById("searchDiv") != null) {
+                document.getElementById("searchDiv").remove()
+            }
+        }
+    }
+
 }
