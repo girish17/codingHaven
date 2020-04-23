@@ -1,3 +1,4 @@
+/* @author: girish, elijah*/
 var count = 0
 document.getElementById("postQuestion").onclick =  function postQuestion() {
     var question = '<span class="questionText">' + ++count + '. ' + document.getElementById("question").value + '</span><br>'
