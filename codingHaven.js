@@ -1,6 +1,6 @@
 var count = 0
 document.getElementById("postQuestion").onclick =  function postQuestion() {
-    var question = '<span class="questionText">' + ++count + '. ' + document.getElementById("question").value + '<span><br>'
+    var question = '<span class="questionText">' + ++count + '. ' + document.getElementById("question").value + '</span><br>'
     var button = '<input type="button" value="Answer" class="answerButton" id="answerButton" onclick="loadAnswerTextArea()">'
     document.getElementById("postedQuestions").innerHTML += question+button
 }

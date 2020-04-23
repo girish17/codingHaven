@@ -2,6 +2,8 @@
     position: absolute;
     top: 0px;
     right: 0px;
+    height:40px;
+    font-size:medium;
 }
 
 body {
@@ -41,7 +43,11 @@ textarea {
 }
 
 #answerDiv {
+  
+}
 
+#answerText {
+    font-style:italic;
 }
 
 #searchDiv {
