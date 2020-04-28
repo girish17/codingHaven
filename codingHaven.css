@@ -54,9 +54,10 @@ textarea {
 
 #searchDiv {
     position: absolute;
-    top: 20px;
+    top: 40px;
     right: 0px;
     background-color: white;
     height: 100px;
     width: 630px;
+    box-shadow: -5px 10px 5px black;
 }
