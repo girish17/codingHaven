@@ -3,6 +3,7 @@ var count = 0
 document.getElementById("postQuestion").onclick =  function postQuestion() {
     var question = document.getElementById("question").value
     if(question.length != 0) {
+        document.getElementById("postQuestion").hidden=true
         var question = '<span class="questionText" id="question' + ++count + '">' + count + '. ' + document.getElementById("question").value + '</span><br>'
         var button = '<input type="button" value="Answer" class="answerButton" id="answerButton" onclick="loadAnswerTextArea()">'
         document.getElementById("postedQuestions").innerHTML += question+button
@@ -30,6 +31,7 @@ function postAnswer() {
     //Hide the answer div containg textarea and post question button
     document.getElementById("answerDiv").remove()
     document.getElementById("postedQuestions").innerHTML += answer
+    document.getElementById("postQuestion").hidden=false
 }
 
 function cancel() {
@@ -44,7 +46,7 @@ function cancel() {
 
 }
 
-document.getElementById("searchText").onkeydown = () => {
+document.getElementById("searchText").onchange = () => {
     var searchString = document.getElementById("searchText").value
     var searchDiv = document.createElement('div')
     searchDiv.setAttribute("id", "searchDiv")
