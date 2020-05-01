@@ -55,6 +55,10 @@ document.getElementById("searchText").onchange = () => {
     {
         if((searchString.length  > 0) && (questionTexts[i].innerHTML.search(searchString) > -1)) {
             searchDiv.innerHTML = questionTexts[i].innerHTML
+            console.log("searchdiv ",searchDiv)
+            if(document.getElementById("searchDiv") != null) {
+                document.getElementById("searchDiv").remove()
+            }
             document.getElementById("searchText").after(searchDiv)
         }
         else {
