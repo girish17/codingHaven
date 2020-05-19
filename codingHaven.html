@@ -10,6 +10,10 @@
         <img src="img/logo.png" alt="logo" width="70px" height="70px">
         <h1>Coding Haven</h1>
         <p>This coding website is for you to ask questions to learn about coding</p>
+        <input type="button" value="Sign up" id="signUpBtn">
+        <input type="button" value="Sign in" id="signInBtn">
+        <input type="text" id="username" size="10" placeholder="Username" hidden="hidden">
+        <input type="password" id="password" size="15" placeholder="Password" hidden="hidden">
         <input type="search" name="searchText" id="searchText" size="75" placeholder="To search for a coding question, start typing here...">
         <!-- <form id="questionForm" method="POST" action="#"> -->
             <textarea name="question" id="question" rows="20" cols="70" required="required" placeholder="Please type your question here"></textarea>
@@ -20,6 +24,7 @@
         <h3>Questions posted</h3>
         <div id="postedQuestions">
         </div>
+        <script src="res/jquery-3.5.1.js"></script>
         <script src="codingHaven.js"></script>
     </body>
 </html>

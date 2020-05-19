@@ -62,3 +62,39 @@ textarea {
     width: 630px;
     box-shadow: -5px 10px 5px black;
 }
+
+#signUpBtn {
+    position: absolute;
+    top: 0px;
+    right: 650px;
+    width: auto;
+    height: 40px;
+    font-size: larger;
+}
+
+#signInBtn {
+    position: absolute;
+    top: 0px;
+    right: 730px;
+    width: auto;
+    height: 40px;
+    font-size: larger;
+} 
+
+#username {
+    position: absolute;
+    top: 50px;
+    right: 650px;
+    width: auto;
+    height: 30px;
+    font-size: larger;
+}
+
+#password {
+    position: absolute;
+    top: 80px;
+    right: 650px;
+    width: 145px;
+    height: 30px;
+    font-size: larger;
+}

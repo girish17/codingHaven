@@ -1,68 +1,74 @@
 /* @author: girish, elijah*/
 var count = 0
-document.getElementById("postQuestion").onclick =  function postQuestion() {
-    var question = document.getElementById("question").value
-    if(question.length != 0) {
-        document.getElementById("postQuestion").hidden=true
-        var question = '<span class="questionText" id="question' + ++count + '">' + count + '. ' + document.getElementById("question").value + '</span><br>'
-        var button = '<input type="button" value="Answer" class="answerButton" id="answerButton" onclick="loadAnswerTextArea()">'
-        document.getElementById("postedQuestions").innerHTML += question+button
-    }
-    else {
-        alert("Please type a question and click on post")
-    }
-}
-
-function loadAnswerTextArea() {
-    document.getElementById("answerButton").remove()
-    var answerDiv = document.createElement('div')
-    answerDiv.setAttribute("id", "answerDiv")
-    answerDiv.innerHTML = '<textarea name="answerText" id="answerText" rows="20" cols="70" required="required" placeholder="Please type your answer here"></textarea>'
-    var postAnswerButton = document.createElement('div')
-    var inputBtn = '<input id="postAnswer" type="submit" value="Post Answer" onclick="postAnswer()">'
-    inputBtn += '<input id="cancelBtn" type="button" value="Cancel" onclick="cancel()">'
-    postAnswerButton.innerHTML = inputBtn
-    document.getElementById("postedQuestions").appendChild(answerDiv)
-    document.getElementById("answerText").after(postAnswerButton)  
-}
-
 function postAnswer() {
-    var answer = '<span id="answerTextElement"> A. ' + document.getElementById("answerText").value + '</span><br>'
+    var answer = $('<span id="answerTextElement"> A. ' + $("#answerText").val() + '</span><br>') 
     //Hide the answer div containg textarea and post question button
-    document.getElementById("answerDiv").remove()
-    document.getElementById("postedQuestions").innerHTML += answer
-    document.getElementById("postQuestion").hidden=false
+    $("#answerDiv").remove()
+    $("#postedQuestions").append(answer)
+    $("#postQuestion").show()
 }
 
 function cancel() {
-    document.getElementById("cancelBtn").remove()
-    document.getElementById("answerDiv").remove()
-    var button = document.createElement('input')
+    $("#cancelBtn").remove()
+    $("#answerDiv").remove()
+    var button = $('input')
     button.type = "button"
     button.value = "Answer"
     button.id = "answerButton"
     button.onclick = loadAnswerTextArea
-    document.getElementById("question"+count).after(button)
+    $("#question" + count).after(button)
 
 }
-
-document.getElementById("searchText").onchange = () => {
-    var searchString = document.getElementById("searchText").value
-    var searchDiv = document.createElement('div')
-    searchDiv.setAttribute("id", "searchDiv")
-    var questionTexts = document.getElementsByClassName("questionText")
-    for(var i=0; i<questionTexts.length; i++)
-    {
-        if((searchString.length  > 0) && (questionTexts[i].innerHTML.search(searchString) > -1)) {
-            searchDiv.innerHTML += questionTexts[i].innerHTML + '<br>'
-        }
-    }
-    if(document.getElementById("searchDiv") != null) {
-        document.getElementById("searchDiv").remove()
-    }
-    document.getElementById("searchText").after(searchDiv)
+function loadAnswerTextArea() {
+    $("#answerButton").remove()
+    var answerDiv =$('div')
+    answerDiv.attr("id", "answerDiv")
+    var textAreaEle = '<textarea name="answerText" id="answerText" rows="20" cols="70" required="required" placeholder="Please type your answer here"></textarea>'
+    answerDiv.html(textAreaEle)
+    var postAnswerButton = $('div')
+    var inputBtn = '<input id="postAnswer" type="submit" value="Post Answer" onclick="postAnswer()">'
+    inputBtn += '<input id="cancelBtn" type="button" value="Cancel" onclick="cancel()">'
+    postAnswerButton.html(inputBtn)
+    $("#postedQuestions").append(answerDiv)
+    $("#answerText").after(postAnswerButton)
 }
+$(document).ready(function(){
+    $("#postQuestion").click(function() {
+            var question = $("#question").val()
+            if (question.length != 0) {
+                $("#postQuestion").hide()
+                var question = '<span class="questionText" id="question' + ++count + '">' + count + '. ' + $("#question").val() + '</span><br>'
+                var button = '<input type="button" value="Answer" class="answerButton" id="answerButton" onclick="loadAnswerTextArea()">'
+                $("#postedQuestions").append(question + button) 
+            }
+            else {
+                alert("Please type a question and click on post")
+            }
+    })
+    $("#searchText").change(function() {
+            var searchString = $("#searchText").val()
+            var searchDiv = document.createElement('div')
+            searchDiv.setAttribute("id", "searchDiv")
+            var questionTexts = $(".questionText")
+            for (var i = 0; i < questionTexts.length; i++) {
+                if ((searchString.length > 0) && (questionTexts[i].innerHTML.search(searchString) > -1)) {
+                    searchDiv.innerHTML += questionTexts[i].innerHTML + '<br>'
+                }
+            }
+            if ($("#searchDiv") != null) {
+                $("#searchDiv").remove()
+            }
+            $("#searchText").after(searchDiv)
+        })
 
-document.getElementById("clearBtn").onclick = () => {
-    document.getElementById("question").value = ""
-}
+    $("#clearBtn").click(function(){
+            $("#question").val("")
+            $("#postQuestion").show()
+    })
+
+    $("#signUpBtn").click(function(){
+            $("#username").hide()
+            $("#password").hide()
+    })
+    
+})
